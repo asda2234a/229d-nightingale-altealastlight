@@ -3,6 +3,7 @@ using UnityEngine;
 public class Bullet2D : MonoBehaviour
 {
     public float maxDistance = 20f; // ระยะทางสูงสุดที่กระสุนจะอยู่
+    public int bulletDamage = 10;
     private Vector2 startPosition;
 
     void Start()
@@ -21,8 +22,10 @@ public class Bullet2D : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Destroyable"))
+        DestructibleObject destructible = collision.gameObject.GetComponent<DestructibleObject>();
+        if (collision.gameObject.CompareTag("Destroyable") && destructible != null)
         {
+            destructible.TakeDamage(bulletDamage); // ใส่ damage ที่ต้องการ
             Debug.Log("TarGet Hit Do Damage");
         }
 

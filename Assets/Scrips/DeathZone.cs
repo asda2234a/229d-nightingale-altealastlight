@@ -31,4 +31,13 @@ public class DeathZone : MonoBehaviour
             Destroy(player);
         }
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        DestructibleObject destructible = collision.gameObject.GetComponent<DestructibleObject>();
+        if (collision.gameObject.CompareTag("Destroyable"))
+        {
+            destructible.TakeDamage(10000);
+        }
+    }
 }
