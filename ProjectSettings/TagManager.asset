@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Destroyable
   - Wall
+  - Lava
+  - Chunk
   layers:
   - Default
   - TransparentFX

@@ -18,9 +18,9 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = Input.GetAxis("Horizontal");
 
-        // à¤Å×èÍ¹·Õè«éÒÂ-¢ÇÒ
+        // ï¿½ï¿½ï¿½ï¿½Í¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½
         rb2d.linearVelocity = new Vector2(moveInput * speed, rb2d.linearVelocity.y);
-        if (Input.GetButtonDown("Jump") && !isJumping)
+        if (Input.GetButtonDown("Jump") && !isJumping && !Input.GetKey(KeyCode.S))
         {
             rb2d.AddForce(new Vector2(rb2d.linearVelocity.x, jumpForce));
 

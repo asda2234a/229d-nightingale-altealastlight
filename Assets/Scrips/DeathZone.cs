@@ -6,18 +6,26 @@ public class DeathZone : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            Debug.Log(player);
+        }
+        else
+        {
+            //Debug.Log("Found");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             Debug.Log("Die");
             Destroy(player);
