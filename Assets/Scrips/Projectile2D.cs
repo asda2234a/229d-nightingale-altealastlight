@@ -1,4 +1,5 @@
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class Projectile2D : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class Projectile2D : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            // แปลงตำแหน่งเมาส์ในจอ เป็นตำแหน่งในโลก 2D
+            // ๏ฟฝลง๏ฟฝ๏ฟฝ๏ฟฝหน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝในจ๏ฟฝ ๏ฟฝ็นต๏ฟฝ๏ฟฝหน๏ฟฝ๏ฟฝ๏ฟฝลก 2D
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Debug.DrawRay(ray.origin, ray.direction * 5f, Color.magenta, 5f);
 
@@ -34,16 +35,16 @@ public class Projectile2D : MonoBehaviour
 
             if (hit.collider != null)
             {
-                // ย้าย Target ไปที่ตำแหน่งคลิก
+                // ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ Target ไปท๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝหน่งค๏ฟฝิก
                 target.transform.position = new Vector2(hit.point.x, hit.point.y);
 
-                // คำนวณความเร็วสำหรับการยิง
+                // ๏ฟฝำนวณ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝับ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝิง
                 Vector2 projectileVelocity = CalculateProjectileVelocity(shootPoint.position, hit.point, 1f);
 
-                // สร้างกระสุนใหม่
+                // ๏ฟฝ๏ฟฝ๏ฟฝาง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝุน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
                 Rigidbody2D firedBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
 
-                // ใส่ความเร็วให้กระสุน
+                // ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝุน
                 firedBullet.linearVelocity = projectileVelocity;
 
             }//hit.collider

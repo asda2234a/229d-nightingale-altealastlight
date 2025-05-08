@@ -4,6 +4,7 @@ public class DeathZone : MonoBehaviour
 {
     public GameObject player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private GameOverManager gameOverManager;
     void Start()
     {
         if (player == null)
@@ -11,10 +12,12 @@ public class DeathZone : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player");
             Debug.Log(player);
         }
-        else
+
+        if (gameOverManager == null)
         {
-            //Debug.Log("Found");
+            gameOverManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<GameOverManager>();
         }
+
     }
 
     // Update is called once per frame
@@ -28,8 +31,14 @@ public class DeathZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Die");
+            Die();
             Destroy(player);
         }
+    }
+
+    void Die()
+    {
+        gameOverManager.TriggerGameOver();
     }
 
     void OnCollisionEnter2D(Collision2D collision)

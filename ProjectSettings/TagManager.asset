@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Lava
   - Chunk
+  - LevelManager
   layers:
   - Default
   - TransparentFX
