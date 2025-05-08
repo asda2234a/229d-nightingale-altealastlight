@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = Input.GetAxis("Horizontal");
 
-        // ����͹������-���
         rb2d.linearVelocity = new Vector2(moveInput * speed, rb2d.linearVelocity.y);
         if (Input.GetButtonDown("Jump") && !isJumping && !Input.GetKey(KeyCode.S))
         {
@@ -27,9 +26,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionStay2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") && isJumping == true)
         {
             isJumping = false;
         }

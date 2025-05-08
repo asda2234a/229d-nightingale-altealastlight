@@ -27,7 +27,6 @@ public class Projectile2D : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            // �ŧ���˹������㹨� �繵��˹���š 2D
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Debug.DrawRay(ray.origin, ray.direction * 5f, Color.magenta, 5f);
 
@@ -35,16 +34,12 @@ public class Projectile2D : MonoBehaviour
 
             if (hit.collider != null)
             {
-                // ���� Target 价����˹觤�ԡ
                 target.transform.position = new Vector2(hit.point.x, hit.point.y);
 
-                // �ӹǳ������������Ѻ����ԧ
                 Vector2 projectileVelocity = CalculateProjectileVelocity(shootPoint.position, hit.point, 1f);
 
-                // ���ҧ����ع����
                 Rigidbody2D firedBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
 
-                // ����������������ع
                 firedBullet.linearVelocity = projectileVelocity;
 
             }//hit.collider
